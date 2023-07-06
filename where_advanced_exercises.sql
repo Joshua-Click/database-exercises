@@ -31,12 +31,12 @@ SELECT DISTINCT last_name FROM employees WHERE last_name LIKE 'e%e';
 SELECT * FROM employees WHERE hire_date BETWEEN '1990-01-01' AND '1999-12-31';
 
 -- Find all current or previous employees born on Christmas. Enter a comment with top three employee numbers
-SELECT * FROM employees WHERE birth_date LIKE '%-12-31';
+SELECT * FROM employees WHERE birth_date LIKE '%-12-25';
 -- 10200, 10526, 10556
 
 -- Find all current or previous employees hired in the 90s and born on Christmas. 
 -- Enter a comment with top three employee numbers.
-SELECT * FROM employees WHERE birth_date like '%-12-31' AND hire_date between '1990-01-01' AND '1999-12-31';
+SELECT * FROM employees WHERE birth_date like '%-12-25' AND hire_date between '1990-01-01' AND '1999-12-31';
 -- 10556, 11095, 12715
 
 -- Find all unique last names that have a 'q' in their last name.
