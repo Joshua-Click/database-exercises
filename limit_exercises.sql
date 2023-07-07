@@ -2,8 +2,11 @@ SHOW DATABASES;
 USE employees;
 
 -- List the first 10 distinct last name sorted in descending order.
-SELECT DISTINCT last_name FROM employees ORDER by last_name limit 10;
--- Aamodt/acton/adachi/aingworth/akaboshi/akazan/akiyama/alameldin/albarhamtoshy/alblas
+SELECT DISTINCT last_name FROM employees 
+ORDER by last_name Desc
+limit 10;
+-- 'Zykh''Zyda''Zwicker''Zweizig''Zumaque''Zultner''Zucker''Zuberek''Zschoche''Zongker'
+
 
 
 -- Find all previous or current employees hired in the 90s and born on Christmas.
