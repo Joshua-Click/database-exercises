@@ -4,6 +4,7 @@ show tables;
 SELECT * FROM titles;
 SELECT DISTINCT title FROM titles;
 -- 7 different titles
+SELECT COUNT(DISTINCT title) FROM titles;
 
 SELECT * FROM employees;
 -- Write a query to find a list of all unique last names that start and end with 'E' using GROUP BY
@@ -17,6 +18,11 @@ SELECT first_name, last_name
 FROM employees
 WHERE last_name LIKE 'e%e'
 GROUP BY first_name, last_name;
+
+SELECT CONCAT(first_name, ' ', last_name) AS full_name
+FROM employees
+WHERE last_name LIKE 'e%e'
+Group by full_name;
 
 -- Write a query to find the unique last names with a 'q' but not 'qu'. Include those names in a comment in your sql code.
 SELECT last_name
