@@ -50,4 +50,16 @@ HAVING n_user > 1;
 
 
 -- From your previous query, are there any duplicate usernames? YES
--- What is the highest number of times a username shows up? 6 Bonus: How many duplicate usernames are there?
+-- What is the highest number of times a username shows up? 6 
+-- Bonus: How many duplicate usernames are there?
+SELECT LOWER(
+		CONCAT(
+			SUBSTR(first_name,1,1),
+			SUBSTR(last_name,1,4),
+			SUBSTR(birth_date,6,2),
+			SUBSTR(birth_date,3,2))) 
+		AS username,
+count(*) AS dup_count
+FROM employees
+GROUP BY username
+HAVING dup_count > 1;
