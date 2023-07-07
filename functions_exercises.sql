@@ -77,7 +77,7 @@ SELECT * FROM employees WHERE birth_date like '%-12-25' AND hire_date
 between '1990-01-01' AND '1999-12-31';
 -- Use datediff() function to find how many days they have been working at the company 
 -- (Hint: You will also need to use NOW() or CURDATE()),
-SELECT DATEDIFF(NOW(), hire_date) As time_worked
+SELECT *, DATEDIFF(NOW(), hire_date) As days_worked
 FROM employees WHERE birth_date LIKE '%-12-25' AND hire_date BETWEEN '1990-01-01' AND '1999-12-31'; 
 
 
