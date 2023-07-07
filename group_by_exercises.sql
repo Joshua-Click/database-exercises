@@ -50,4 +50,4 @@ HAVING n_user > 1;
 
 
 -- From your previous query, are there any duplicate usernames? YES
--- What is the highest number of times a username shows up? Bonus: How many duplicate usernames are there?
+-- What is the highest number of times a username shows up? 6 Bonus: How many duplicate usernames are there?
