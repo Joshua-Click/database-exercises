@@ -45,5 +45,6 @@ SELECT * FROM customer
 WHERE customer_id > 4
 AND last_name LIKE 'c%' OR last_name LIKE 'S%' OR last_name LIKE 'T%';
 -- Select all columns minus the password column from the staff table for rows that contain a password
-
+SELECT * FROM  staff;
+SELECT staff_id, first_name, last_name, address_id, picture, email, store_id, active, username, last_update FROM staff;
 -- Select all columns minus the password column from the staff table for rows that do not contain a password
