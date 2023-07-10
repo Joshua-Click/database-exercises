@@ -165,7 +165,21 @@ JOIN departments AS d
 GROUP BY d.dept_name
 ORDER BY average_salary DESC;
 
-
+-- 11. Bonus Find the names of all current employees, their department name, and their current managers name
+-- departments (d), dept_emp (de), dept_manager (dm), employees (e), salaries (s), titles (t)
+SELECT DISTINCT(CONCAT(e.first_name, ' ', e.last_name)) AS Employee_Name, d.dept_name, CONCAT(m.first_name, ' ', m.last_name) AS Manager_Name
+FROM employees AS e
+JOIN dept_emp AS de
+  ON de.emp_no = e.emp_no
+JOIN dept_manager AS dm
+  ON dm.dept_no = de.dept_no 
+JOIN departments AS d
+  ON d.dept_no = de.dept_no
+JOIN titles AS t
+  ON t.emp_no = e.emp_no
+JOIN employees as m
+  ON m.emp_no = dm.emp_no
+WHERE de.to_date = '9999-01-01' AND dm.to_date = '9999-01-01';
 
 
 
