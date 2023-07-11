@@ -22,15 +22,15 @@ WHERE t.to_date > NOW();
 -- 3. How many people in the employees table are no longer working for the company? Give the answer in a comment in your code.
 
 SELECT COUNT(*) FROM employees
-	WHERE emp_no IN (SELECT emp_no FROM salaries WHERE to_date NOT LIKE '999%');
--- 300024
+	WHERE emp_no IN (SELECT de.emp_no FROM dept_emp de WHERE to_date NOT LIKE '99%');
+-- 85108
 
 -- 4. Find all the current department managers that are female. List their names in a comment in your code.
 
 SELECT first_name, last_name, gender
 FROM employees
-	WHERE emp_no in (SELECT emp_no FROM dept_manager) AND gender = 'F';
--- 13 rows returned
+	WHERE emp_no in (SELECT emp_no FROM dept_manager WHERE to_date LIKE '99%') AND gender = 'F';
+-- 4 rows returned
 
 -- 5. Find all the employees who currently have a higher salary than the companies overall, historical average salary.
 
@@ -45,6 +45,7 @@ SELECT COUNT(salary)
 FROM salaries
 WHERE salary >= ((SELECT MAX(salary) AS highest_salary FROM salaries WHERE to_date = '9999-01-01')-
 (SELECT STDDEV(salary) AS 1_std_dev FROM salaries WHERE to_date = '9999-01-01'));
+-- 220
 
 
 	-- (Hint: you can use a built in function to calculate the standard deviation.) What percentage of all salaries is this?
@@ -58,6 +59,7 @@ WHERE salary >= ((SELECT MAX(salary) AS highest_salary FROM salaries WHERE to_da
 	
 	FROM salaries WHERE to_date = '9999-01-01';
 
+    
 	-- Hint You will likely use multiple subqueries in a variety of ways
 	-- Hint It's a good practice to write out all of the small queries that you can. 
 	-- Add a comment above the query showing the number of rows returned. 
