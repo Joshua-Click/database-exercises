@@ -125,3 +125,25 @@ where s.to_date > NOW());
 -- 3. Find the department name that the employee with the highest salary works in.
 
 -- 4. Who is the highest paid employee within each department.
+
+SELECT 
+	d.dept_name,
+    d.dept_no,
+	max(s.salary)
+from salaries s
+join dept_emp de
+on de.emp_no = s.emp_no
+and s.to_date > NOW()
+and de.to_date > NOW()
+join departments d
+using(dept_no)
+group by dept_name;
+
+select e.first_name, e.last_name, de.dept_no, s.salary
+from employees e
+join dept_emp de
+	using(emp_no)
+join salaries s
+	using(emp_no)
+where de.to_date > NOW()
+and s.to_date > now();
