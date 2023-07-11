@@ -40,23 +40,28 @@ WHERE s.salary > (SELECT avg(salary) FROM salaries) AND s.to_date > NOW();
 -- 154542 rows returned
 
 
--- 6. How many current salaries are within 1 standard deviation of the current highest salary? (
-	-- Hint: you can use a built in function to calculate the standard deviation.) What percentage of all salaries is this?
+-- 6. How many current salaries are within 1 standard deviation of the current highest salary?
+SELECT COUNT(salary)
+FROM salaries
+WHERE salary >= ((SELECT MAX(salary) AS highest_salary FROM salaries WHERE to_date = '9999-01-01')-
+(SELECT STDDEV(salary) AS 1_std_dev FROM salaries WHERE to_date = '9999-01-01'));
+
+
+	-- (Hint: you can use a built in function to calculate the standard deviation.) What percentage of all salaries is this?
+
+
+	SELECT COUNT(*) AS Total_salaries, 
+		(SELECT COUNT(salary)
+		FROM salaries
+		WHERE salary >= ((SELECT MAX(salary) AS highest_salary FROM salaries WHERE to_date = '9999-01-01')-(SELECT STDDEV(salary) AS 1_std_dev FROM salaries WHERE to_date = '9999-01-01'))
+		) AS salaries_in_range
+	
+	FROM salaries WHERE to_date = '9999-01-01';
+
 	-- Hint You will likely use multiple subqueries in a variety of ways
 	-- Hint It's a good practice to write out all of the small queries that you can. 
 	-- Add a comment above the query showing the number of rows returned. 
 	-- You will use this number (or the query that produced it) in other, larger queries.
-
-SELECT MAX(salary) FROM salaries WHERE to_date = '9999-01-01';
-SELECT STDDEV(salary) FROM salaries WHERE to_date = '9999-01-01';
-SELECT COUNT(*) FROM salaries WHERE to_date = '9999-01-01';
-
-
-SELECT salary FROM salaries WHERE salary < 
--- STD = 16904.83     MAX is 158220    
-
-
-
 
 -- BONUS
 
