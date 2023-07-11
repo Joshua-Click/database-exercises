@@ -51,14 +51,11 @@ WHERE salary >= ((SELECT MAX(salary) AS highest_salary FROM salaries WHERE to_da
 	-- (Hint: you can use a built in function to calculate the standard deviation.) What percentage of all salaries is this?
 
 
-	SELECT COUNT(*) AS Total_salaries, 
-		(SELECT COUNT(salary)
-		FROM salaries
-		WHERE salary >= ((SELECT MAX(salary) AS highest_salary FROM salaries WHERE to_date = '9999-01-01')-(SELECT STDDEV(salary) AS 1_std_dev FROM salaries WHERE to_date = '9999-01-01'))
-		) AS salaries_in_range
-	
-	FROM salaries WHERE to_date = '9999-01-01';
-
+SELECT (SELECT COUNT(salary)
+FROM salaries
+WHERE salary >= ((SELECT MAX(salary) FROM salaries WHERE to_date LIKE '99%') - 
+(SELECT STDDEV(salary) FROM salaries WHERE to_date LIKE '99%'))) 
+/ (SELECT COUNT(*) FROM salaries WHERE to_date LIKE '99%') * 100 AS thats_my_purse;
     
 	-- Hint You will likely use multiple subqueries in a variety of ways
 	-- Hint It's a good practice to write out all of the small queries that you can. 
