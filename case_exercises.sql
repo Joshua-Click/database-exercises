@@ -20,17 +20,20 @@ join dept_emp
 
 select *,
 	case 
-		when last_name between 'A' and 'H' then 'A-H'
-        when last_name between 'I' and 'Q' then 'I-Q'
-        else 'R-Z'
+		when last_name between 'A' and 'h' then 'A-H'
+        when last_name between 'I' and 'q' then 'I-Q'
+        when last_name between 'R' and 'Z' then 'R-Z'
+        else 'Other'
 	end as alpha_group
 from employees;
+    
+
     
 
 
 -- 3. How many employees (current or previous) were born in each decade?
 
-select *,
+select count(*) as count_per_decade,
 	case
 		when birth_date like '195%' then '50s'
         when birth_date like '196%' then '60s'
@@ -40,7 +43,8 @@ select *,
         when birth_date like '200%' then '2000s'
 		else 'im old'
 	end as decades
-FROM employees;
+FROM employees
+group by decades;
         
 								  
 -- 4. What is the current average salary for each of the following department groups: 
@@ -67,10 +71,15 @@ GROUP BY dept_group
 
 -- Bonus: Remove duplicate employees from exercise 1
 
-select emp_no, dept_no, hire_date, to_date, concat(first_name, ' ',last_name) as full_name,
+select de.emp_no, dept_no, hire_date, to_date, concat(e.first_name, ' ',e.last_name) as full_name,
 	if(to_date = '9999-01-01', True, False) as is_current_employee
-from employees
-join dept_emp
-	USING(emp_no)
+from employees e
 
+join dept_emp de
+	on de.emp_no = e.emp_no 
+-- didnt finish
 ;
+
+
+
+
