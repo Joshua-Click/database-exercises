@@ -64,3 +64,13 @@ left join salaries s
 GROUP BY dept_group
 ;
 
+
+-- Bonus: Remove duplicate employees from exercise 1
+
+select emp_no, dept_no, hire_date, to_date, concat(first_name, ' ',last_name) as full_name,
+	if(to_date = '9999-01-01', True, False) as is_current_employee
+from employees
+join dept_emp
+	USING(emp_no)
+
+;
