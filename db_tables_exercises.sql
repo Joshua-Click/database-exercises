@@ -1,41 +1,41 @@
--- List all databases
+-- 3. List all databases
 SHOW DATABASES;
--- Use albums database
+-- 4. Use albums database
 USE albums_db;
 
--- Show the currently selected database
+-- 5. Show the currently selected database
 SELECT database();
 
--- List all tables in the database
+-- 6. List all tables in the database
 SHOW TABLES;
 
--- switch to the employees database
+-- 7. switch to the employees database
 USE employees;
 
--- how the currently selected database
+-- 8. how the currently selected database
 SELECT database();
 
--- List all tables in the database
+-- 9. List all tables in the database
 SHOW TABLES;
 
--- What dif data types are present in this table?
+-- 10. What dif data types are present in this table?
 SELECT * FROM employees;
 DESCRIBE employees;
 -- 				Int / date / varchar(14) / var char(16) / enum(M/F) / Date
--- Which tables do you think contain a numeric type column?
+-- 11. Which tables do you think contain a numeric type column?
 --              emp_no 
--- Which tables do you think contain a string type column?
+-- 12. Which tables do you think contain a string type column?
 --              first_name / last_name / gender
--- Which tables do you think contain a date type column?
+-- 13. Which tables do you think contain a date type column?
 --              birth_date / hire_date
 
--- What is the relationship between the employees and the departments tables?
+-- 14. What is the relationship between the employees and the departments tables?
 SELECT * FROM departments;
 DESCRIBE departments;
 -- The employee table and the department tables have no direct link
 -- But combined they are linked by where the employees work in each dept
 
--- SQL code that created the dept_manager table
+-- 15. SQL code that created the dept_manager table
 SHOW CREATE TABLE dept_manager;
 
 
