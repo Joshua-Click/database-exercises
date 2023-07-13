@@ -67,18 +67,10 @@ left join salaries s
     and s.to_date > NOW()
 GROUP BY dept_group
 ;
+-- P&Q 67315 / s&M 86379 / r&d 67719 / f,h, &c 69443
 
 
--- Bonus: Remove duplicate employees from exercise 1
 
-select de.emp_no, dept_no, hire_date, to_date, concat(e.first_name, ' ',e.last_name) as full_name,
-	if(to_date = '9999-01-01', True, False) as is_current_employee
-from employees e
-
-join dept_emp de
-	on de.emp_no = e.emp_no 
--- didnt finish
-;
 
 
 
